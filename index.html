@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My HTML Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #ee6c4d;
+        --dark: #333;
+        --white: #fff;
+        --gray: #f5f5f5;
+        --light-dark: #434343;
+      }
+      body {
+        margin: 0;
+        font-family: "Montserrat", Arial, sans-serif;
+        background: var(--white);
+        color: var(--dark);
+        box-sizing: border-box;
+      }
+      header {
+        background: url("Assets/heroImage.jpg") center/cover no-repeat;
+        min-height: 450px;
+        color: var(--white);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      nav {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 20px 40px;
+        font-size: 15px;
+      }
+      nav .brand {
+        margin-right: auto;
+        font-weight: 700;
+        letter-spacing: 2px;
+        font-size: 18px;
+      }
+      nav a {
+        color: var(--white);
+        text-decoration: none;
+        margin-left: 24px;
+        transition: color 0.2s;
+      }
+      nav a:hover {
+        color: black;
+      }
+      .header-content {
+        margin-top: 60px;
+        padding-bottom: 60px;
+      }
+      .header-content h1 {
+        font-size: 2.6rem;
+        font-weight: 700;
+        margin-bottom: 24px;
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 8px #0007;
+      }
+      .header-content p {
+        margin-bottom: 32px;
+        color: #efefef;
+        font-weight: 400;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        text-shadow: 1px 1px 5px #0007;
+      }
+      .header-content .cta-btn {
+        background: var(--primary);
+        border: none;
+        color: var(--white);
+        font-weight: 600;
+        padding: 12px 32px;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .header-content .cta-btn:hover {
+        background: #ff9867;
+      }
+
+      .section-main-cta {
+        background: var(--primary);
+        color: var(--white);
+        text-align: center;
+        padding: 56px 20px;
+      }
+      .section-main-cta h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 18px;
+      }
+      .section-main-cta p {
+        font-size: 1.04rem;
+        margin-bottom: 28px;
+      }
+      .section-main-cta .cta-btn {
+        background: var(--white);
+        color: var(--primary);
+        border: none;
+        font-weight: 600;
+        border-radius: 25px;
+        padding: 12px 32px;
+        font-size: 16px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+      }
+      .section-main-cta .cta-btn:hover {
+        background: #ff9867;
+        color: var(--white);
+      }
+      /* Services Section */
+      .services {
+        background: var(--white);
+        padding: 60px 0 30px 0;
+        text-align: center;
+      }
+      .services h3 {
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 1.3rem;
+        margin-bottom: 40px;
+        letter-spacing: 1.2px;
+      }
+      .service-list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 900px;
+        margin: 0 auto;
+        gap: 32px;
+      }
+      .service-item {
+        flex: 1 1 180px;
+        min-width: 180px;
+        max-width: 220px;
+        background: var(--gray);
+        margin: 0 10px;
+        border-radius: 10px;
+        padding: 28px 12px;
+        box-shadow: 0 3px 7px -3px #0002;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .service-item i {
+        color: var(--primary);
+        font-size: 2.6rem;
+        margin-bottom: 16px;
+      }
+      .service-item h4 {
+        margin: 0 0 10px 0;
+        font-size: 1.07rem;
+        font-weight: 700;
+      }
+      .service-item p {
+        color: #666;
+        font-size: 0.98rem;
+        margin: 0;
+      }
+
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        padding: 0 20px 40px 20px;
+        background: var(--white);
+        margin: 0 auto;
+        max-width: 960px;
+        overflow: visible;
+      }
+      .img-popout {
+        position: relative;
+        overflow: visible;
+        cursor: pointer;
+      }
+      .img-popout img {
+        width: 100%;
+        height: auto;
+        border-radius: 7px;
+        transition: transform 0.3s cubic-bezier(0.4, 2, 0.6, 1), box-shadow 0.2s;
+        will-change: transform;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        position: relative;
+        z-index: 0;
+        display: block;
+        background: #fff;
+      }
+      .img-popout:hover img,
+      .img-popout:focus-within img {
+        transform: scale(1.18);
+        z-index: 10;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+      }
+
+      @media (max-width: 800px) {
+        .projects {
+          grid-template-columns: repeat(2, 1fr);
+          max-width: 720px;
+        }
+      }
+      @media (max-width: 480px) {
+        .projects {
+          grid-template-columns: 1fr;
+          max-width: 100%;
+          padding: 0 10px 40px 10px;
+        }
+      }
+
+      .section-download {
+        background: var(--light-dark);
+        color: var(--white);
+        text-align: center;
+        padding: 40px 20px;
+      }
+      .section-download .cta-btn {
+        background: var(--primary);
+        color: var(--white);
+        margin-top: 14px;
+        border: none;
+        font-size: 17px;
+        padding: 12px 32px;
+        border-radius: 25px;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.2s;
+      }
+      .section-download .cta-btn:hover {
+        background: #ff9867;
+      }
+
+      .contact {
+        background: var(--gray);
+        color: var(--dark);
+        padding: 50px 20px 30px 20px;
+        text-align: center;
+      }
+      .contact h3 {
+        font-size: 1.42rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--primary);
+      }
+      .contact p {
+        margin: 0 0 24px 0;
+        font-size: 0.99rem;
+        color: #333;
+      }
+      .contact .contact-info {
+        display: flex;
+        justify-content: center;
+        font-size: 15px;
+        gap: 34px;
+        flex-wrap: wrap;
+        color: var(--dark);
+      }
+      .contact .contact-info div {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 10px;
+      }
+      .contact .contact-info i {
+        color: var(--primary);
+      }
+      footer {
+        text-align: center;
+        padding: 18px;
+        font-size: 15px;
+        background: var(--white);
+        color: #777;
+        border-top: 1px solid #ececec;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="brand">My HTML Site</div>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-content">
+        <h1>ADMIRE MY HTML WEBSITE!</h1>
+        <p>
+          It's so pretty you just have to stare at it. Simple, stylish and
+          food-friendly. Start building your awesome site project using pure
+          HTML and CSS alone.
+        </p>
+        <a href="#" class="cta-btn">Find Out More</a>
+      </div>
+    </header>
+    <section class="section-main-cta">
+      <h2>We've got what you need!</h2>
+      <p>
+        Start Bootstrap has everything you need to get your new website up and
+        running in no time! Choose one of many useful themes, and customize it
+        easily with HTML and CSS features. No strings, no subscriptions, just a
+        free download!
+      </p>
+      <a href="#" class="cta-btn">Read More</a>
+    </section>
+    <section class="services">
+      <h3>At Your Service</h3>
+      <div class="service-list">
+        <div class="service-item">
+          <i>🎨</i>
+          <h4>Sturdy Themes</h4>
+          <p>Our themes are updated regularly to keep them bug free!</p>
+        </div>
+        <div class="service-item">
+          <i>⏰</i>
+          <h4>Up to Date</h4>
+          <p>All dependencies are kept current to keep things fresh.</p>
+        </div>
+        <div class="service-item">
+          <i>🔖</i>
+          <h4>Ready to Publish</h4>
+          <p>You can use this design as is, or customize to your needs!</p>
+        </div>
+        <div class="service-item">
+          <i>💖</i>
+          <h4>Made with Love</h4>
+          <p>You have to make your websites with love these days!</p>
+        </div>
+      </div>
+    </section>
+    <section class="projects" aria-label="Portfolio projects">
+      <div class="img-popout">
+        <img src="Assets/image1.jpeg" alt="Project 1" />
+      </div>
+      <div class="img-popout">
+        <img src="Assets/image2.jpeg" alt="Project 2" />
+      </div>
+      <div class="img-popout">
+        <img src="Assets/image3.jpeg" alt="Project 3" />
+      </div>
+      <div class="img-popout">
+        <img src="Assets/image4.jpeg" alt="Project 4" />
+      </div>
+      <div class="img-popout">
+        <img src="Assets/image5.jpg" alt="Project 5" />
+      </div>
+      <div class="img-popout">
+        <img src="Assets/image6.jpeg" alt="Project 6" />
+      </div>
+      <div class="img-popout">
+        <img
+          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"
+          alt="Project 7"
+        />
+      </div>
+      <div class="img-popout">
+        <img
+          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80"
+          alt="Project 8"
+        />
+      </div>
+      <div class="img-popout">
+        <img
+          src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=400&q=80"
+          alt="Project 9"
+        />
+      </div>
+    </section>
+    <section class="section-download">
+      <h2>Free Download at Start Bootstrap!</h2>
+      <a href="#" class="cta-btn">Download Now</a>
+    </section>
+    <section class="contact">
+      <h3>Let's Get In Touch!</h3>
+      <p>
+        Ready to start your next project? Send us a message and we will get back
+        to you as soon as possible!
+      </p>
+      <div class="contact-info">
+        <div><i>📞</i> +1 (555) 123-4567</div>
+        <div><i>✉️</i> contact@email.com</div>
+      </div>
+    </section>
+    <footer>Copyright &copy; Your Website 2025</footer>
+  </body>
+</html>
